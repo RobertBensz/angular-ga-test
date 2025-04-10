@@ -5,11 +5,11 @@
       <div class="d-flex flex-column h-100">
         <h4 class="mb-4"><i class="fas fa-chart-pie me-2"></i>Analytics</h4>
 
-        <!-- Stats -->
-        <div class="stats-grid">
+        <!-- Stats Section -->
+        <div class="stats-grid mb-3">
           <div
             *ngFor="let stat of eventStats"
-            class="stat-badge mb-2 p-2 rounded"
+            class="stat-badge mb-3 p-3 rounded-3"
           >
             <i [class]="getStatIcon(stat.label)" class="me-2"></i>
             <span class="fw-bold">{{ stat.count }}</span>
@@ -23,18 +23,18 @@
     <div class="col-md-9 col-lg-10 p-4">
       <h1 class="mb-4"><i class="fas fa-flask me-2"></i>Event Tester</h1>
 
-      <!-- Event Cards -->
+      <!-- Event Cards Section -->
       <div
         class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 mb-4"
       >
         <div class="col" *ngFor="let e of eventButtons">
           <div
-            class="card h-100 shadow-lg border-0 hover-card"
+            class="card h-100 shadow border-0 hover-card"
             (click)="triggerEvent(e)"
           >
             <div class="card-body text-center">
               <div class="event-icon mb-3">
-                <i [class]="e.icon"></i>
+                <i [class]="e.icon" class="fs-2 text-primary"></i>
               </div>
               <h5 class="card-title">{{ e.title }}</h5>
               <p class="card-text text-muted">{{ e.desc }}</p>
@@ -46,8 +46,8 @@
         </div>
       </div>
 
-      <!-- Event Log -->
-      <div class="card shadow-lg border-0">
+      <!-- Event Log Section -->
+      <div class="card shadow border-0 mb-4">
         <div
           class="card-header bg-transparent d-flex justify-content-between align-items-center"
         >
@@ -85,11 +85,11 @@
     </div>
   </div>
 
-  <!-- Toasts -->
+  <!-- Toasts Section -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div
       *ngFor="let toast of toasts"
-      class="toast show fade mb-2 bg-success text-white"
+      class="toast show fade mb-2 bg-success text-white rounded-3"
     >
       <div class="toast-body">
         <i class="fas fa-check-circle me-2"></i>{{ toast }}
