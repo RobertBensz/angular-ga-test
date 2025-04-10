@@ -1,64 +1,99 @@
-<div class="container py-5">
-  <h1 class="mb-4">Google Analytics Test Dashboard</h1>
+<div class="container-fluid p-0 vh-100">
+  <div class="row g-0 h-100">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-lg-2 sidebar p-3">
+      <div class="d-flex flex-column h-100">
+        <h4 class="mb-4"><i class="fas fa-chart-pie me-2"></i>Analytics</h4>
 
-  <div class="d-flex gap-2">
-    <!-- <button class="btn btn-primary mb-3" (click)="sendPageView()">
-      Send Pageview
-    </button> -->
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div
+            *ngFor="let stat of eventStats"
+            class="stat-badge mb-2 p-2 rounded"
+          >
+            <i [class]="getStatIcon(stat.label)" class="me-2"></i>
+            <span class="fw-bold">{{ stat.count }}</span>
+            <small class="ms-1">{{ stat.label }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Button click event -->
-    <button class="btn btn-success mb-3" (click)="trackButtonClick()">
-      Track Button Click
-    </button>
+    <!-- Main Content -->
+    <div class="col-md-9 col-lg-10 p-4">
+      <h1 class="mb-4"><i class="fas fa-flask me-2"></i>Event Tester</h1>
 
-    <!-- Download event -->
-    <a
-      href="https://example.com/test.pdf"
-      target="_blank"
-      class="btn btn-outline-secondary mb-3"
-      (click)="trackDownload('test.pdf')"
-      >Download PDF</a
-    >
+      <!-- Event Cards -->
+      <div
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 mb-4"
+      >
+        <div class="col" *ngFor="let e of eventButtons">
+          <div
+            class="card h-100 shadow-lg border-0 hover-card"
+            (click)="triggerEvent(e)"
+          >
+            <div class="card-body text-center">
+              <div class="event-icon mb-3">
+                <i [class]="e.icon"></i>
+              </div>
+              <h5 class="card-title">{{ e.title }}</h5>
+              <p class="card-text text-muted">{{ e.desc }}</p>
+              <div class="event-preview">
+                <pre>{{ formatEventPreview(e) }}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <!-- Outbound link -->
-    <a
-      href="https://externalwebsite.com"
-      target="_blank"
-      class="btn btn-outline-primary mb-3"
-      (click)="trackOutboundLink('https://externalwebsite.com')"
-      >Visit External Site</a
-    >
+      <!-- Event Log -->
+      <div class="card shadow-lg border-0">
+        <div
+          class="card-header bg-transparent d-flex justify-content-between align-items-center"
+        >
+          <h5 class="m-0"><i class="fas fa-list me-2"></i>Event Log</h5>
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            (click)="clearLogs()"
+          >
+            <i class="fas fa-trash-alt me-1"></i>Clear
+          </button>
+        </div>
+        <div class="card-body p-0">
+          <div class="list-group list-group-flush log-container">
+            <div
+              *ngFor="let log of logs"
+              class="list-group-item list-group-item-action"
+            >
+              <div class="d-flex justify-content-between">
+                <small class="text-muted">[{{ log.time }}]</small>
+                <small class="badge bg-primary">{{ log.type }}</small>
+              </div>
+              <div class="log-message">{{ log.message }}</div>
+              <pre class="log-details">{{ log.details }}</pre>
+            </div>
+            <div
+              *ngIf="!logs.length"
+              class="list-group-item text-center text-muted py-4"
+            >
+              <i class="far fa-smile fs-4 mb-2"></i>
+              <div>No events logged yet</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- Pageview trigger -->
 
-  <!-- Form submission -->
-  <form (submit)="trackFormSubmit($event)" class="mb-3">
-    <input
-      type="email"
-      class="form-control mb-2"
-      placeholder="Your email"
-      required
-    />
-    <button type="submit" class="btn btn-warning">Submit Form</button>
-  </form>
-
-  <!-- Scroll depth trigger -->
-  <button class="btn btn-dark mb-3" (click)="trackScrollDepth()">
-    Track Scroll Depth
-  </button>
-
-  <!-- Social share -->
-  <div class="mb-3">
-    <button class="btn btn-info me-2" (click)="trackSocial('facebook')">
-      Share on Facebook
-    </button>
-    <button class="btn btn-danger" (click)="trackSocial('twitter')">
-      Share on Twitter
-    </button>
+  <!-- Toasts -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div
+      *ngFor="let toast of toasts"
+      class="toast show fade mb-2 bg-success text-white"
+    >
+      <div class="toast-body">
+        <i class="fas fa-check-circle me-2"></i>{{ toast }}
+      </div>
+    </div>
   </div>
-
-  <!-- Video play (simulated) -->
-  <button class="btn btn-secondary" (click)="trackVideoEvent()">
-    Play Video (Simulated)
-  </button>
 </div>

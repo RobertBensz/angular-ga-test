@@ -1,0 +1,90 @@
+// Sidebar
+.sidebar {
+  background-color: #2c3e50;
+  color: white;
+
+  .stat-badge {
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Added shadow for better visibility
+
+    i {
+      width: 20px;
+      text-align: center;
+    }
+
+    small {
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+  }
+}
+
+// Event Cards
+.hover-card {
+  transition: all 0.15s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); // Enhanced hover shadow
+  }
+
+  .event-icon {
+    i {
+      font-size: 2rem;
+      color: #4361ee;
+    }
+  }
+
+  .card-text {
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+
+  .event-preview {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 12px;
+    text-align: left;
+    font-size: 0.7rem;
+    font-family: monospace;
+    max-height: 100px;
+    overflow: hidden;
+  }
+}
+
+// Event Log
+.log-container {
+  max-height: 300px;
+  overflow-y: auto;
+
+  .list-group-item {
+    padding: 0.75rem 1.25rem;
+
+    .log-message {
+      font-size: 0.85rem;
+      margin: 4px 0;
+    }
+
+    .log-details {
+      font-size: 0.7rem;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Toast Notifications
+.toast {
+  border: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+  .toast-body {
+    border-radius: 6px;
+  }
+}
