@@ -20,5 +20,17 @@
   <link rel="stylesheet" href="styles-5INURTSO.css"></head>
   <body>
     <app-root></app-root>
+    <button onclick="sendTestEvent()">Send Event</button>
+
+    <script>
+      function sendTestEvent() {
+        gtag("event", "button_click", {
+          event_category: "engagement",
+          event_label: "send_event_button",
+          value: 1,
+        });
+        console.log("NEW Event sent to Google Analytics!");
+      }
+    </script>
   <script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-HZEARV66.js" type="module"></script></body>
 </html>

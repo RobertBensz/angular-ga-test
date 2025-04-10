@@ -23,5 +23,17 @@
   </head>
   <body>
     <app-root></app-root>
+    <button onclick="sendTestEvent()">Send Event</button>
+
+    <script>
+      function sendTestEvent() {
+        gtag("event", "button_click", {
+          event_category: "engagement",
+          event_label: "send_event_button",
+          value: 1,
+        });
+        console.log("NEW Event sent to Google Analytics!");
+      }
+    </script>
   </body>
 </html>
