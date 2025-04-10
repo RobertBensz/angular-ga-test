@@ -21,6 +21,6 @@ export class AppComponent {
 
   sendConfigEvent(): void {
     console.log('sendConfigEvent');
-    gtag('config', 'page_route', { page_path: 'test' });
+    gtag('event', 'page_route', { page_path: 'test' });
   }
 }
